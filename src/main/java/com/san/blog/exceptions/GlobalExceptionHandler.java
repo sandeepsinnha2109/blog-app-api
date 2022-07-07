@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.san.blog.payloads.ApiResponse;
-
+/**
+ * Global Exception handler
+ * @author Admin
+ *
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 	

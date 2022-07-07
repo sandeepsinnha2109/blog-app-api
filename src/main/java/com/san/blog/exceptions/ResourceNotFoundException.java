@@ -1,5 +1,10 @@
 package com.san.blog.exceptions;
 
+/**
+ * Exception handler class
+ * @author Admin
+ *
+ */
 public class ResourceNotFoundException extends RuntimeException {
 
 	String resourceName;
