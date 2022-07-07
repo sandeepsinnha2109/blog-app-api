@@ -1,7 +1,8 @@
 package com.san.blog.controller;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.san.blog.payloads.ApiResponse;
@@ -26,13 +26,13 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("/")
-	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
 		UserDto createdUserDto = userService.createUser(userDto);
 		return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED); 
 	}
 	
 	@PostMapping("/updateUser/{userId}")
-	public ResponseEntity<UserDto> updatedUser(@RequestBody UserDto userDto,@PathVariable("userId") Integer uid){
+	public ResponseEntity<UserDto> updatedUser(@Valid @RequestBody UserDto userDto,@PathVariable("userId") Integer uid){
 		UserDto updatedUserDto=this.userService.updateUser(userDto, uid);
 		return ResponseEntity.ok(updatedUserDto);
 	}
